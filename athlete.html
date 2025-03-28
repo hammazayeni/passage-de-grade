@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Athlete Registration Form</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #1e1e2f, #3a3a5e);
+            margin: 0;
+            color: #fff;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            gap: 8px;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            outline: none;
+        }
+        input::placeholder {
+            color: #ddd;
+        }
+        .button {
+            background: #ff6b6b;
+            color: white;
+            padding: 12px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 8px;
+            transition: 0.3s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 16px;
+        }
+        .button:hover {
+            background: #ff4757;
+        }
+        .remove-button {
+            background: #ff4757;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            margin-top: 10px;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: 0.3s ease-in-out;
+        }
+        .remove-button:hover {
+            background: #ff2e4d;
+        }
+        .athlete-entry {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .icon {
+            width: 32px;
+            height: 32px;
+        }
+    </style>
+    <script>
+        function ADD() {
+            const container = document.getElementById('athletes');
+            const athleteDiv = document.createElement('div');
+            athleteDiv.classList.add('athlete-entry');
+            athleteDiv.innerHTML = `
+                <div class="form-group">
+                    <label><img width="30" height="30" src="https://img.icons8.com/fluency-systems-filled/30/athlete.png" alt="athlete"/> Athlete Name:</label>
+                    <input type="text" name="athlete_name[]" placeholder="Enter athlete name" required>
+                </div>
+                <div class="form-group">
+                    <label><img width="30" height="30" src="https://img.icons8.com/ios-filled/30/weight-kg.png" alt="weight-kg"/> Weight:</label>
+                    <input type="number" name="weight[]" placeholder="Enter weight" required>
+                </div>
+                <div class="form-group">
+                    <label><<img width="30" height="30" src="https://img.icons8.com/ios-filled/30/age.png" alt="age"/> Age:</label>
+                    <input type="number" name="age[]" placeholder="Enter age" required>
+                </div>
+                <div class="form-group">
+                    <label><img width="30" height="30" src="https://img.icons8.com/ios-filled/30/certificate.png" alt="certificate"/> Grade:</label>
+                    <input type="text" name="grade[]" placeholder="Enter grade" required>
+                </div>
+                <button type="button" class="remove-button" onclick="this.parentElement.remove()">Remove</button>
+                <hr>
+            `;
+            container.appendChild(athleteDiv);
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>PASSAGE DE GRADE</h2>
+        <form>
+            <!-- Add an image at the top of the form -->
+            <div style="text-align: center; margin-bottom: 20px;">
+                <img src="Downloads/passage de grade.png" alt="Form Image" width="300" height="300">
+            </div>
+
+            <div class="form-group">
+                <label><img width="30" height="30" src="https://img.icons8.com/ios-filled/30/gum-.png" alt="gum-"/> Club Name:</label>
+                <input type="text" name="club_name" placeholder="Enter club name" required>
+            </div>
+            <div class="form-group">
+                <label><img width="30" height="30" src="https://img.icons8.com/ios-filled/30/coach.png" alt="coach"/> Coach Name:</label>
+                <input type="text" name="coach_name" placeholder="Enter coach name" required>
+            </div>
+            <div id="athletes" class="form-group"></div>
+            <button type="button" class="button" onclick="ADD()">
+                <img width="30" height="30" src="https://img.icons8.com/ios-filled/30/add--v1.png" alt="add--v1"/> ADD
+            </button>
+            <br><br>
+            <button type="submit" class="button">
+                <img width="30" height="30" src="https://img.icons8.com/ios-filled/30/sent.png" alt="sent"/> Submit
+            </button>
+        </form>
+    </div>
+</body>
+</html>
